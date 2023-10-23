@@ -16,14 +16,14 @@ module.exports = {
     'prettier/prettier': [
       'warn',
       {
-        arrowParens: 'always',
+        arrowParens: 'avoid',
         semi: false,
         trailingComma: 'es5',
         tabWidth: 2,
         endOfLine: 'auto',
         useTabs: false,
         singleQuote: true,
-        printWidth: 120,
+        printWidth: 100,
         jsxSingleQuote: true,
       },
     ],

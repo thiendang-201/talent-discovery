@@ -5,20 +5,21 @@ const axios = Axios.create({
   timeout: 1000,
 })
 
-axios.interceptors.request.use((config) => {
+axios.interceptors.request.use(config => {
   return config
 })
 
 axios.interceptors.response.use(
-  (response) => {
+  response => {
     if (response.status === 200) return response.data
     return response
   },
   (error: AxiosError | Error) => {
     const isAxiosError = Axios.isAxiosError(error)
 
-    isAxiosError && Promise.reject([error.response?.data, isAxiosError])
-    Promise.reject([error, false])
+    if (isAxiosError) throw [error.response?.data, isAxiosError]
+
+    throw [error, false]
   }
 )
 
