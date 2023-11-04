@@ -4,7 +4,12 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({
+      jsxImportSource: '@emotion/react',
+      plugins: [['@swc/plugin-emotion', {}]],
+    }),
+  ],
   server: {
     port: 3000,
   },
@@ -14,6 +19,12 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      '@theme': path.resolve(__dirname, './src/theme/index.ts'),
+      '@layout': path.resolve(__dirname, './src/layout/index.ts'),
+      '@routes': path.resolve(__dirname, './src/routes/index.ts'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@features': path.resolve(__dirname, 'src/features'),
     },
   },
 })

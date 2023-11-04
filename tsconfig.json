@@ -22,7 +22,14 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@theme": ["src/theme/index.ts"],
+      "@layout": ["src/layout/index.ts"],
+      "@routes": ["src/routes/index.ts"],
+
+      "@/*": ["src/*"],
+      "@pages/*": ["src/pages/*"],
+      "@features/*": ["src/features/*"],
+      "@components/*": ["src/components/*"]
     }
   },
   "include": ["src"],
