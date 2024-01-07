@@ -30,6 +30,13 @@ export default function GlobalStyle() {
           border: 'none',
           color: 'inherit',
           font: 'inherit',
+          outline: 'none',
+        },
+        h1: {
+          lineHeight: 1.4,
+        },
+        p: {
+          lineHeight: 1.2,
         },
       }}
     />

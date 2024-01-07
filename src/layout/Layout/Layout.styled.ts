@@ -13,6 +13,6 @@ export const InnerContent = styled.div(
     gridArea: 'content',
   },
   props => ({
-    backgroundColor: props.theme.colors.gray2,
+    backgroundColor: props.theme.colors.background,
   })
 )

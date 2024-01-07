@@ -7,9 +7,12 @@ export const Container = styled.div(
     display: 'grid',
     gridTemplateRows: '64px 1fr 64px',
     border: '1px solid',
+    position: 'sticky',
+    top: 0,
   },
   ({ theme }) => ({
     borderColor: theme.colors.slate6,
+    backgroundColor: theme.colors.background,
   })
 )
 
@@ -18,6 +21,16 @@ export const LogoBox = styled.div({
   justifyContent: 'center',
   alignItems: 'center',
 })
+
+export const Logo = styled.div(
+  {
+    width: '32px',
+    height: '32px',
+  },
+  ({ theme }) => ({
+    background: `linear-gradient(45deg, ${theme.colors.indigo9}, ${theme.colors.sky9})`,
+  })
+)
 
 export const NavList = styled.div({
   display: 'flex',

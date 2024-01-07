@@ -12,14 +12,14 @@ export const NavLink = styled(RRDNavLink)(
     alignItems: 'center',
   },
   ({ theme }) => ({
-    color: theme.colors.slate11,
+    color: theme.colors.slate9,
 
     '&.active': {
-      backgroundColor: theme.colors.slate12,
+      backgroundColor: theme.colors.blue3,
       color: theme.colors.blue9,
     },
     '&:not(.active):hover': {
-      backgroundColor: theme.colors.slate3,
+      backgroundColor: theme.colors.gray3,
     },
   })
 )

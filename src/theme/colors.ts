@@ -1,4 +1,27 @@
-import { gray, blue, blueA, slate, crimson, crimsonA, yellow, orange, teal } from '@radix-ui/colors'
+import {
+  gray,
+  blue,
+  blueA,
+  slate,
+  crimson,
+  crimsonA,
+  yellow,
+  orange,
+  teal,
+  sky,
+  indigo,
+  grayDark,
+  blueDark,
+  slateDark,
+  blueDarkA,
+  crimsonDark,
+  crimsonDarkA,
+  yellowDark,
+  orangeDark,
+  tealDark,
+  skyDark,
+  indigoDark,
+} from '@radix-ui/colors'
 
 export const lightColors = {
   ...gray,
@@ -10,6 +33,22 @@ export const lightColors = {
   ...yellow,
   ...orange,
   ...teal,
-  blue9: '#0099ff',
+  ...sky,
+  ...indigo,
   background: '#ffffff',
+}
+
+export const darkColors = {
+  ...grayDark,
+  ...blueDark,
+  ...blueDarkA,
+  ...slateDark,
+  ...crimsonDark,
+  ...crimsonDarkA,
+  ...yellowDark,
+  ...orangeDark,
+  ...tealDark,
+  ...skyDark,
+  ...indigoDark,
+  background: slateDark.slate1,
 }

@@ -20,15 +20,11 @@ export const Container = styled.div(
   {
     display: 'flex',
     gap: 12,
-    borderBottom: '1px solid',
-    paddingInline: '30px',
+    paddingInline: '24px',
     height: '52px',
     alignItems: 'center',
     backgroundClip: String(Left),
   },
-  ({ theme }) => ({
-    borderColor: theme.colors.slate6,
-  }),
   {
     [`${Left}:has(+${Heading})`]: {
       marginRight: 0,

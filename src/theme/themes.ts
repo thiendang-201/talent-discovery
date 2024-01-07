@@ -12,4 +12,7 @@ export const lightTheme = {
       fontWeight: 600,
     },
   },
+  shadows: {
+    menuShadow: '0 10px 20px rgba(0, 0, 0, .1)',
+  },
 }
