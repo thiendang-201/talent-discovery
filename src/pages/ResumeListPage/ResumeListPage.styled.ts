@@ -1,25 +1,17 @@
-import { FolderList, ResumeFilter, FileList } from '@features/resumeMatcher'
+import { FolderList } from '@features/resumeMatcher'
 import styled from '@emotion/styled'
 import { Container as HeaderContainer, Right } from '@components/Header'
 import Button from '@components/Button'
+import { ScrollArea } from '@components/ScrollView'
 
 export const Container = styled.div({
   display: 'grid',
-  gridTemplateColumns: '240px 1fr',
-  gridTemplateRows: 'minmax(52px, max-content) minmax(52px, max-content) 1fr',
-  gridTemplateAreas: `
-    'folders header'
-    'folders subHeader'
-    'folders content'
-  `,
+  gridTemplateColumns: '240px 1fr 324px',
 })
 
-export const StyledFolders = styled(FolderList)({
-  gridArea: 'folders',
-})
+export const StyledFolders = styled(FolderList)({})
 
 export const StyledHeader = styled(HeaderContainer)({
-  gridArea: 'header',
   marginTop: '20px',
 })
 
@@ -28,13 +20,7 @@ export const StyledHeaderRight = styled(Right)({
   gap: '10px',
 })
 
-export const StyledSubHeader = styled(HeaderContainer)({
-  gridArea: 'subHeader',
-})
-
-export const StyledFilter = styled(ResumeFilter)({
-  gridArea: 'filter',
-})
+export const StyledSubHeader = styled(HeaderContainer)({})
 
 const Label = styled(Button)({
   ['input[type=file]']: {
@@ -44,6 +30,6 @@ const Label = styled(Button)({
 
 export const UploadButton = Label.withComponent('label')
 
-export const ResumeList = styled(FileList)({
-  gridArea: 'content',
+export const ContentContainer = styled(ScrollArea)({
+  height: '100vh',
 })

@@ -6,8 +6,8 @@ export const Header = styled.div(
   }),
   {
     borderRadius: '8px',
-    aspectRatio: '4 / 3',
-    padding: '24px',
+    aspectRatio: '1 / 1',
+    padding: '12px',
     display: 'flex',
     justifyContent: 'center',
     transition: 'all 0.2s',

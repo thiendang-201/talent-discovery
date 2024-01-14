@@ -5,6 +5,9 @@ import QueryProvider from '@/api/QueryProvider'
 import { AppThemeProvider } from '@theme'
 import { BrowserRouter } from 'react-router-dom'
 import MainRoutes from '@routes'
+import { enableMapSet } from 'immer'
+
+enableMapSet()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

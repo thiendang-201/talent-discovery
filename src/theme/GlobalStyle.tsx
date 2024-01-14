@@ -12,8 +12,9 @@ export default function GlobalStyle() {
           margin: 0,
         },
         body: {
-          fontFamily: `'Inter', sans-serif`,
-          fontSize: 14,
+          fontFamily: '"Lexend", sans-serif',
+          fontOpticalSizing: 'auto',
+          fontSize: '14px',
           color: theme.colors.slate12,
         },
         a: {

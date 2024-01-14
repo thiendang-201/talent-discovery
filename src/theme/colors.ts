@@ -21,6 +21,18 @@ import {
   tealDark,
   skyDark,
   indigoDark,
+  blackA,
+  whiteA,
+  iris,
+  irisDark,
+  tealP3,
+  tealDarkP3,
+  violet,
+  violetDark,
+  red,
+  redDark,
+  green,
+  greenDark,
 } from '@radix-ui/colors'
 
 export const lightColors = {
@@ -35,6 +47,13 @@ export const lightColors = {
   ...teal,
   ...sky,
   ...indigo,
+  ...blackA,
+  ...whiteA,
+  ...iris,
+  ...tealP3,
+  ...violet,
+  ...red,
+  ...green,
   background: '#ffffff',
 }
 
@@ -50,5 +69,12 @@ export const darkColors = {
   ...tealDark,
   ...skyDark,
   ...indigoDark,
+  ...blackA,
+  ...whiteA,
+  ...irisDark,
+  ...tealDarkP3,
+  ...violetDark,
+  ...redDark,
+  ...greenDark,
   background: slateDark.slate1,
 }

@@ -1,17 +1,34 @@
-import * as ScrollArea from '@radix-ui/react-scroll-area'
-import { PropsWithChildren } from 'react'
+import * as React from 'react'
+import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area'
+import {
+  StyledScrollAreaRoot,
+  StyledScrollAreaScrollbar,
+  StyledScrollAreaThumb,
+  StyledViewport,
+} from './ScrollView.styled'
 
-export default function ScrollView({ children }: PropsWithChildren) {
+const ScrollArea = React.forwardRef<
+  React.ElementRef<typeof ScrollAreaPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
+>(({ children, ...props }, ref) => (
+  <StyledScrollAreaRoot ref={ref} {...props}>
+    <StyledViewport>{children}</StyledViewport>
+    <ScrollBar />
+    <ScrollAreaPrimitive.Corner />
+  </StyledScrollAreaRoot>
+))
+ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName
+
+const ScrollBar = React.forwardRef<
+  React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
+  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
+>(({ orientation = 'vertical', ...props }, ref) => {
   return (
-    <ScrollArea.Root>
-      <ScrollArea.Viewport>{children}</ScrollArea.Viewport>
-      <ScrollArea.Scrollbar orientation='horizontal'>
-        <ScrollArea.Thumb />
-      </ScrollArea.Scrollbar>
-      <ScrollArea.Scrollbar orientation='vertical'>
-        <ScrollArea.Thumb />
-      </ScrollArea.Scrollbar>
-      <ScrollArea.Corner />
-    </ScrollArea.Root>
+    <StyledScrollAreaScrollbar ref={ref} orientation={orientation} {...props}>
+      <StyledScrollAreaThumb />
+    </StyledScrollAreaScrollbar>
   )
-}
+})
+ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName
+
+export { ScrollArea, ScrollBar }

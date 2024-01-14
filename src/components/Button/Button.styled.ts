@@ -13,6 +13,10 @@ export const VariantButton = styled.button<ButtonProps>(
       soft_primary: colors.blue3,
       soft_slate: colors.slate3,
       soft_gray: colors.gray3,
+
+      outline_primary: colors.blue3,
+      outline_slate: colors.slate3,
+      outline_gray: colors.gray3,
     }[key]
 
     const textColor = {
@@ -21,6 +25,10 @@ export const VariantButton = styled.button<ButtonProps>(
       soft_primary: colors.blue9,
       soft_slate: colors.slate12,
       soft_gray: colors.gray12,
+
+      outline_primary: colors.blue9,
+      outline_slate: colors.slate12,
+      outline_gray: colors.gray12,
     }[key]
 
     const hoverBg = {
@@ -33,6 +41,10 @@ export const VariantButton = styled.button<ButtonProps>(
       soft_primary: colors.blue5,
       soft_slate: colors.slate5,
       soft_gray: colors.gray5,
+
+      outline_primary: colors.blue5,
+      outline_slate: colors.slate5,
+      outline_gray: colors.gray5,
     }[key]
 
     const activeBg = {
@@ -45,10 +57,20 @@ export const VariantButton = styled.button<ButtonProps>(
       soft_primary: colors.blue6,
       soft_slate: colors.slate6,
       soft_gray: colors.gray6,
+
+      outline_primary: colors.blue6,
+      outline_slate: colors.slate6,
+      outline_gray: colors.gray6,
     }[key]
 
     const boxShadow = {
       solid_primary: `0 4px 8px 0 ${colors.blue9}4D`,
+    }[key]
+
+    const borderColor = {
+      outline_primary: colors.blue9,
+      outline_slate: colors.slate9,
+      outline_gray: colors.gray9,
     }[key]
 
     return {
@@ -64,6 +86,7 @@ export const VariantButton = styled.button<ButtonProps>(
       },
 
       boxShadow,
+      border: borderColor ? `1px solid ${borderColor}` : 'none',
     }
   }
 )
