@@ -1,7 +1,8 @@
 import { BsFillPeopleFill, BsIntersect } from 'react-icons/bs'
 
-import { Container, Logo, LogoBox, NavList } from './SideBarLeft.styled'
+import { Container, LogoBox, NavList } from './SideBarLeft.styled'
 import { NavItem } from './NavItem'
+import { Logo } from '@components/Logo'
 
 export function SideBarLeft() {
   return (

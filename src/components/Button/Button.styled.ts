@@ -3,7 +3,7 @@ import { ButtonProps } from './Button.type'
 import { getKey } from '@/utils'
 
 export const VariantButton = styled.button<ButtonProps>(
-  ({ variant = 'solid', theme, color = 'primary' }) => {
+  ({ variant = 'solid', theme, color = 'primary', size = 'medium' }) => {
     const colors = theme.colors
     const key = getKey([variant, color])
 
@@ -95,6 +95,12 @@ export const VariantButton = styled.button<ButtonProps>(
       outline_gray: colors.gray9,
     }[key]
 
+    const padding = {
+      small: '4px 6px',
+      medium: '8px 10px',
+      large: '12px 16px',
+    }[size]
+
     return {
       backgroundColor,
       color: textColor,
@@ -109,6 +115,7 @@ export const VariantButton = styled.button<ButtonProps>(
 
       boxShadow,
       border: borderColor ? `1px solid ${borderColor}` : 'none',
+      padding,
     }
   }
 )
@@ -116,13 +123,14 @@ export const VariantButton = styled.button<ButtonProps>(
 const StyledButton = styled(VariantButton)({
   fontSize: '12px',
   fontWeight: 500,
-  padding: '8px 10px',
   display: 'flex',
   alignItems: 'center',
   gap: '16px',
   cursor: 'pointer',
   transition: '0.2s all ease-out',
   borderRadius: '6px',
+  textAlign: 'center',
+  justifyContent: 'center',
 })
 
 export default StyledButton

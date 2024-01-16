@@ -22,16 +22,6 @@ export const LogoBox = styled.div({
   alignItems: 'center',
 })
 
-export const Logo = styled.div(
-  {
-    width: '32px',
-    height: '32px',
-  },
-  ({ theme }) => ({
-    background: `linear-gradient(45deg, ${theme.colors.indigo9}, ${theme.colors.sky9})`,
-  })
-)
-
 export const NavList = styled.div({
   display: 'flex',
   alignItems: 'center',
