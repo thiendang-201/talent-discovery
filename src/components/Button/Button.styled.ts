@@ -9,58 +9,80 @@ export const VariantButton = styled.button<ButtonProps>(
 
     const backgroundColor = {
       solid_primary: colors.blue9,
+      solid_slate: colors.slate9,
+      solid_gray: colors.gray9,
+      solid_red: colors.red9,
 
       soft_primary: colors.blue3,
       soft_slate: colors.slate3,
       soft_gray: colors.gray3,
+      soft_red: colors.red3,
 
       outline_primary: colors.blue3,
       outline_slate: colors.slate3,
       outline_gray: colors.gray3,
+      outline_red: colors.red3,
     }[key]
 
     const textColor = {
       solid_primary: colors.slate1,
+      solid_slate: colors.slate1,
+      solid_gray: colors.slate1,
+      solid_red: colors.slate1,
 
       soft_primary: colors.blue9,
       soft_slate: colors.slate12,
       soft_gray: colors.gray12,
+      soft_red: colors.red9,
 
       outline_primary: colors.blue9,
       outline_slate: colors.slate12,
       outline_gray: colors.gray12,
+      outline_red: colors.red9,
     }[key]
 
     const hoverBg = {
       clear_slate: colors.slate3,
       clear_gray: colors.gray3,
       clear_primary: colors.blue3,
+      clear_red: colors.red3,
 
+      solid_slate: colors.slate11,
+      solid_gray: colors.gray11,
       solid_primary: colors.blue11,
+      solid_red: colors.red11,
 
       soft_primary: colors.blue5,
       soft_slate: colors.slate5,
       soft_gray: colors.gray5,
+      soft_red: colors.red5,
 
       outline_primary: colors.blue5,
       outline_slate: colors.slate5,
       outline_gray: colors.gray5,
+      outline_red: colors.red5,
     }[key]
 
     const activeBg = {
       clear_slate: colors.slate5,
       clear_gray: colors.gray5,
       clear_primary: colors.blue5,
+      clear_red: colors.red5,
 
+      solid_slate: colors.slate12,
+      solid_gray: colors.gray12,
       solid_primary: colors.blue12,
+      solid_red: colors.red12,
 
       soft_primary: colors.blue6,
       soft_slate: colors.slate6,
       soft_gray: colors.gray6,
+      soft_red: colors.red6,
 
       outline_primary: colors.blue6,
       outline_slate: colors.slate6,
       outline_gray: colors.gray6,
+      outline_red: colors.red6,
     }[key]
 
     const boxShadow = {

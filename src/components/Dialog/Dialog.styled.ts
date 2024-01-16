@@ -75,7 +75,7 @@ const StyledFooter = styled.div({
 })
 
 const StyledTitle = styled(DialogPrimitive.Title)({
-  fontSize: '18px',
+  fontSize: '14px',
   fontWeight: 600,
   lineHeight: 1,
   letterSpacing: '-0.4px',
