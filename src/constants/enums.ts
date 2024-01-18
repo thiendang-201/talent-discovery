@@ -11,3 +11,7 @@ export enum FILTER_CATEGORIES {
   CERTIFICATION = 'certification',
   EDUCATION = 'education',
 }
+
+export enum API_ERROR_TYPES {
+  USER_FORBIDEN = 'user.forbidden',
+}

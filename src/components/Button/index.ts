@@ -1,2 +1,2 @@
-export { default } from './Button.styled'
+export { default } from './Button'
 export * from './IconButton.styled'

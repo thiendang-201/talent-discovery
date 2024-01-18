@@ -101,9 +101,16 @@ export const VariantButton = styled.button<ButtonProps>(
       large: '12px 16px',
     }[size]
 
+    const minHeight = {
+      small: '28px',
+      medium: '40px',
+      large: '46px',
+    }[size]
+
     return {
       backgroundColor,
       color: textColor,
+      minHeight,
 
       '&:hover': {
         backgroundColor: hoverBg,
@@ -113,6 +120,11 @@ export const VariantButton = styled.button<ButtonProps>(
         backgroundColor: activeBg,
       },
 
+      '&:disabled': {
+        opacity: 0.8,
+        backgroundColor,
+      },
+
       boxShadow,
       border: borderColor ? `1px solid ${borderColor}` : 'none',
       padding,
@@ -120,7 +132,7 @@ export const VariantButton = styled.button<ButtonProps>(
   }
 )
 
-const StyledButton = styled(VariantButton)({
+export const StyledButton = styled(VariantButton)({
   fontSize: '12px',
   fontWeight: 500,
   display: 'flex',
@@ -132,5 +144,3 @@ const StyledButton = styled(VariantButton)({
   textAlign: 'center',
   justifyContent: 'center',
 })
-
-export default StyledButton

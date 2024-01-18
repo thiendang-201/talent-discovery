@@ -9,6 +9,6 @@ const initialData: AuthData = {
 export const useAuth = create<AuthStoreValues>(set => ({
   ...initialData,
 
-  localLogin: data => set(data),
+  localLogin: data => set({ ...data, isLogged: true }),
   localLogout: () => set(initialData),
 }))

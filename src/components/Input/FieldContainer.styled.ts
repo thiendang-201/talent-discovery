@@ -14,4 +14,5 @@ export const Label = styled.span(({ theme }) => ({
 export const ErrorText = styled.p(({ theme }) => ({
   color: theme.colors.red9,
   fontSize: '12px',
+  minHeight: '14px',
 }))

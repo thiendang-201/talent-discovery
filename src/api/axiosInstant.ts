@@ -14,12 +14,14 @@ axios.interceptors.response.use(
     if (response.status === 200) return response.data
     return response
   },
-  (error: AxiosError | Error) => {
+  (error: AxiosError) => {
     const isAxiosError = Axios.isAxiosError(error)
 
-    if (isAxiosError) throw [error.response?.data, isAxiosError]
+    if (!isAxiosError) {
+      return
+    }
 
-    throw [error, false]
+    throw error.response?.data
   }
 )
 

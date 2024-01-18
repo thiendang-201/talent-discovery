@@ -3,21 +3,36 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { inititalLoginValues, loginSchema } from './LoginForm.constant'
 import { PasswordField, TextField } from '@components/Input'
 import { Container, SubmitButton } from './LoginForm.styled'
+import { useLogin } from '@/api/user'
+import { useAuth } from '../stores'
+import { useNavigate } from 'react-router-dom'
 import { LoginSubmitFn } from './LoginForm.type'
+import { API_ERROR_TYPES } from '@/constants'
 
-type LoginFormProps = {
-  onSubmit: LoginSubmitFn
-}
-
-export function LoginForm({ onSubmit }: LoginFormProps) {
-  const { register, formState, handleSubmit } = useForm({
+export function LoginForm() {
+  const navigate = useNavigate()
+  const { mutateAsync: login, isLoading } = useLogin()
+  const localLogin = useAuth(state => state.localLogin)
+  const { register, formState, handleSubmit, setError } = useForm({
     defaultValues: inititalLoginValues,
     resolver: zodResolver(loginSchema),
   })
 
   const { errors } = formState
 
-  console.log({ errors })
+  const onSubmit: LoginSubmitFn = values => {
+    return login(values, {
+      onSuccess: () => {
+        localLogin(values)
+        navigate('/')
+      },
+      onError: error => {
+        if (error.type === API_ERROR_TYPES.USER_FORBIDEN) {
+          setError('password', { message: 'Tài khoản hoặc mật khẩu không đúng' })
+        }
+      },
+    })
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -36,7 +51,9 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
           inputSize='large'
           error={errors.password?.message}
         />
-        <SubmitButton size='large'>Đăng nhập</SubmitButton>
+        <SubmitButton isLoading={isLoading} size='large'>
+          Đăng nhập
+        </SubmitButton>
       </Container>
     </form>
   )

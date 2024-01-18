@@ -11,7 +11,7 @@ export function FieldContainer({ label, error, children }: PropsWithChildren<Fie
     <Container>
       {label && <Label>{label}</Label>}
       {children}
-      {error && <ErrorText>{error}</ErrorText>}
+      <ErrorText>{error}</ErrorText>
     </Container>
   )
 }

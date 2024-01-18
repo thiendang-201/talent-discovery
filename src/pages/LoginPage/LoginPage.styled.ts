@@ -16,6 +16,7 @@ export const Header = styled.div({
 })
 
 export const Heading = styled.h1({
-  fontSize: '24px',
+  fontSize: '20px',
   lineHeight: '30px',
+  fontWeight: 600,
 })
