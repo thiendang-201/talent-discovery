@@ -39,9 +39,15 @@ export const Icon = styled.div(({ theme }) => ({
   borderRadius: '6px',
 }))
 
-export const Title = styled.div(() => ({
+export const Title = styled.p(() => ({
   fontSize: '12px',
   fontWeight: 600,
+  marginBottom: '4px',
+}))
+
+export const CreatedDate = styled.p(({ theme }) => ({
+  fontSize: '12px',
+  color: theme.colors.slate9,
 }))
 
 export const Content = styled.div()

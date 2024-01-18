@@ -1,8 +1,11 @@
 import { RiFolderUserLine } from 'react-icons/ri'
-import { Container, Content, Icon, Title } from './FolderItem.styled'
+import { format } from 'date-fns'
+import { Container, Content, CreatedDate, Icon, Title } from './FolderItem.styled'
 import { FolderItemProps } from './FolderItem.type'
 
-export function FolderItem({ title, isActive }: FolderItemProps) {
+export function FolderItem({ title, isActive, createdDate }: FolderItemProps) {
+  const formattedCreatedDate = format(createdDate, 'dd/MM/yyyy')
+
   return (
     <Container isActive={isActive}>
       <Icon>
@@ -10,6 +13,7 @@ export function FolderItem({ title, isActive }: FolderItemProps) {
       </Icon>
       <Content>
         <Title>{title}</Title>
+        <CreatedDate>{formattedCreatedDate}</CreatedDate>
       </Content>
     </Container>
   )

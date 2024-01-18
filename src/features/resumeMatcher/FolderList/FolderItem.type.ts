@@ -1,5 +1,6 @@
 export type FolderItemProps = {
   title: string
+  createdDate: string
   isActive: boolean
 }
 

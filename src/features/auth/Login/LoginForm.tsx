@@ -11,7 +11,7 @@ import { API_ERROR_TYPES } from '@/constants'
 
 export function LoginForm() {
   const navigate = useNavigate()
-  const { mutateAsync: login, isLoading } = useLogin()
+  const { mutateAsync: login, isPending } = useLogin()
   const localLogin = useAuth(state => state.localLogin)
   const { register, formState, handleSubmit, setError } = useForm({
     defaultValues: inititalLoginValues,
@@ -51,7 +51,7 @@ export function LoginForm() {
           inputSize='large'
           error={errors.password?.message}
         />
-        <SubmitButton isLoading={isLoading} size='large'>
+        <SubmitButton isLoading={isPending} size='large'>
           Đăng nhập
         </SubmitButton>
       </Container>

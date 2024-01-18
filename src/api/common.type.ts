@@ -6,3 +6,16 @@ export type APIError<TDATA = null> = {
   status_code: number
   type: API_ERROR_TYPES
 }
+
+export type Pagination<TDATA = object> = {
+  totalPages: number
+  totalElements: number
+  page: number
+  size: number
+  results: TDATA[]
+}
+
+export type PaginationPayload = {
+  page: number
+  size: number
+}

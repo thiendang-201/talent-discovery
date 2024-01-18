@@ -1,4 +1,4 @@
-import { IconButton } from '@components/Button'
+import Button, { IconButton } from '@components/Button'
 import { ViewMode } from '@components/ViewMode'
 import * as Header from '@components/Header'
 // import { FaCaretDown } from 'react-icons/fa'
@@ -8,12 +8,7 @@ import {
   RiShareForward2Fill,
   RiFileUploadFill,
 } from 'react-icons/ri'
-import {
-  StyledHeader,
-  StyledHeaderRight,
-  StyledSubHeader,
-  UploadButton,
-} from '../ResumeListPage.styled'
+import { StyledHeader, StyledHeaderRight, StyledSubHeader } from '../ResumeListPage.styled'
 import { useTheme } from '@emotion/react'
 import { useState } from 'react'
 import { VIEW_MODE } from '@/constants'
@@ -38,9 +33,9 @@ export function ResumeListPageHeader() {
           <IconButton variant='clear' color='gray'>
             <RiShareForward2Fill size={16} />
           </IconButton>
-          <UploadButton onClick={openUploadResumeDialog}>
+          <Button onClick={openUploadResumeDialog}>
             Tải lên <RiFileUploadFill size={16} />
-          </UploadButton>
+          </Button>
         </StyledHeaderRight>
       </StyledHeader>
       <StyledSubHeader>

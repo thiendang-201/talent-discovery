@@ -1,7 +1,6 @@
 import { FolderList } from '@features/resumeMatcher'
 import styled from '@emotion/styled'
 import { Container as HeaderContainer, Right } from '@components/Header'
-import Button from '@components/Button'
 import { ScrollArea } from '@components/ScrollView'
 
 export const Container = styled.div({
@@ -21,14 +20,6 @@ export const StyledHeaderRight = styled(Right)({
 })
 
 export const StyledSubHeader = styled(HeaderContainer)({})
-
-const Label = styled(Button)({
-  ['input[type=file]']: {
-    display: 'none',
-  },
-})
-
-export const UploadButton = Label.withComponent('label')
 
 export const ContentContainer = styled(ScrollArea)({
   height: '100vh',
