@@ -10,11 +10,12 @@ export const IconButton = styled(VariantButton)(
     cursor: 'pointer',
     transition: '0.2s all ease-out',
     borderRadius: '6px',
+    aspectRatio: '1/1',
   },
   ({ size = 'medium' }) => {
     const padding = {
-      small: '6px',
-      medium: '8px',
+      small: '2px',
+      medium: '6px',
       large: '12px',
     }[size!]
 

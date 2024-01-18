@@ -102,7 +102,7 @@ export const VariantButton = styled.button<ButtonProps>(
     }[size]
 
     const minHeight = {
-      small: '28px',
+      small: '24px',
       medium: '32px',
       large: '42px',
     }[size]

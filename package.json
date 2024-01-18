@@ -51,6 +51,7 @@
   "devDependencies": {
     "@emotion/babel-plugin": "^11.11.0",
     "@swc/plugin-emotion": "^2.5.96",
+    "@tanstack/eslint-plugin-query": "^5.17.7",
     "@types/node": "^20.5.1",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",

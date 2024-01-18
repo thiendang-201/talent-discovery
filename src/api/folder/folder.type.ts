@@ -11,3 +11,7 @@ export type GetFolderPayload = {
 }
 
 export type FolderResponse = Pagination<Folder>
+
+export type CreateFolderPayload = {
+  folder_name: string
+}

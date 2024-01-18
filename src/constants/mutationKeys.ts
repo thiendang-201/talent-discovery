@@ -1,3 +1,4 @@
 export const MUTATION_KEYS = {
   LOGIN: 'MK_LOGIN',
+  CREATE_FOLDER: 'MK_CREATE_FOLDER',
 }

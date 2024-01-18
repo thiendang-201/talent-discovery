@@ -17,6 +17,7 @@ export default function MainRoutes() {
       >
         <Route index element={<Navigate to={'/resume-matcher'} />} />
         <Route path='resume-matcher' element={<ResumeListPage />} />
+        <Route path='resume-matcher/:folderId' element={<ResumeListPage />} />
       </Route>
       <Route path='login' element={<LoginPage />} />
     </Routes>

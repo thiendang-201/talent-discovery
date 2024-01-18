@@ -1,6 +1,6 @@
-import { QUERY_KEYS } from '@/constants'
-import { useInfiniteQuery } from '@tanstack/react-query'
-import { getFolderList } from './folder.api'
+import { MUTATION_KEYS, QUERY_KEYS } from '@/constants'
+import { useInfiniteQuery, useMutation } from '@tanstack/react-query'
+import { createFolder, getFolderList } from './folder.api'
 import { GetFolderPayload } from './folder.type'
 
 export function useFolderList({ search_value }: GetFolderPayload) {
@@ -15,5 +15,12 @@ export function useFolderList({ search_value }: GetFolderPayload) {
     select: data => {
       return data.pages.flatMap(page => page.results)
     },
+  })
+}
+
+export function useCreateFolder() {
+  return useMutation({
+    mutationKey: [MUTATION_KEYS.CREATE_FOLDER],
+    mutationFn: createFolder,
   })
 }

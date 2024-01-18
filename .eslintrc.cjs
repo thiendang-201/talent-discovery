@@ -7,6 +7,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'eslint-config-prettier',
     'prettier',
+    'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
   parser: '@typescript-eslint/parser',

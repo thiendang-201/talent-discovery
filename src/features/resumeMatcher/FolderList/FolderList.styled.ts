@@ -22,6 +22,7 @@ export const Container = styled.div(
 export const Header = styled.div(
   {
     gridArea: 'header',
+    paddingTop: '16px',
     paddingInline: '16px',
     display: 'flex',
     flexDirection: 'column',
@@ -42,5 +43,11 @@ export const Heading = styled.h5(({ theme }) => ({
 export const SearchContainer = styled.div({
   flex: 1,
   display: 'flex',
+  alignItems: 'center',
+})
+
+export const TopContainer = styled.div({
+  display: 'flex',
+  justifyContent: 'center',
   alignItems: 'center',
 })

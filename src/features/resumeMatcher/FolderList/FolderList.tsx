@@ -5,6 +5,7 @@ import { useDebounce } from '@uidotdev/usehooks'
 import { FolderListHeader } from './FolderListHeader'
 import { useState } from 'react'
 import { useFolderList } from '@/api/folder'
+import { ScrollArea } from '@components/ScrollView'
 
 export function FolderList({ className }: FolderListProps) {
   const [searchValue, setSearchValue] = useState('')
@@ -14,16 +15,11 @@ export function FolderList({ className }: FolderListProps) {
   return (
     <Container className={className}>
       <FolderListHeader searchValue={searchValue} changeSearchValue={setSearchValue} />
-      <div>
+      <ScrollArea>
         {folderList.map(folder => (
-          <FolderItem
-            key={folder.folder_id}
-            title={folder.folder_name}
-            createdDate={folder.created_at}
-            isActive={false}
-          />
+          <FolderItem {...folder} key={folder.folder_id} />
         ))}
-      </div>
+      </ScrollArea>
     </Container>
   )
 }
