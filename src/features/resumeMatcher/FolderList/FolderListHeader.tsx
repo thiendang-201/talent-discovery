@@ -45,6 +45,7 @@ export function FolderListHeader({ searchValue, changeSearchValue }: FolderListH
           <FiPlus size={14} />
         </IconButton>
         <FolderForm
+          heading='Tạo thư mục'
           submitText='Tạo mới'
           onSubmit={onAddFolder}
           isVisible={isModalOpen}

@@ -3,7 +3,14 @@ import { folderSchema, initialFolderFormValues } from './FolderForm.constant'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FolderFormValues, SubmitFolderFormFn } from './FolderForm.type'
 import Button from '@components/Button'
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@components/Dialog'
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@components/Dialog'
 import { TextField } from '@components/Input'
 import styled from '@emotion/styled'
 import { useEffect } from 'react'
@@ -12,6 +19,7 @@ type FolderFormProps = {
   defaultValues?: FolderFormValues
   onSubmit: SubmitFolderFormFn
   submitText: string
+  heading: string
   isVisible: boolean
   changeVisible: (value: boolean) => void
 }
@@ -19,6 +27,7 @@ type FolderFormProps = {
 export function FolderForm({
   defaultValues = initialFolderFormValues,
   submitText,
+  heading,
   isVisible,
   changeVisible,
   onSubmit,
@@ -31,14 +40,14 @@ export function FolderForm({
   const { errors, isSubmitting } = formState
 
   useEffect(() => {
-    !isVisible && reset()
-  }, [isVisible, reset])
+    isVisible && reset(defaultValues)
+  }, [isVisible, defaultValues, reset])
 
   return (
-    <Dialog open={isVisible} onOpenChange={changeVisible}>
+    <Dialog open={isVisible} onOpenChange={isSubmitting ? undefined : changeVisible}>
       <DialogContent maxWidth={400}>
         <StyledDialogHeader>
-          <DialogTitle>Tạo thư mục</DialogTitle>
+          <DialogTitle>{heading}</DialogTitle>
         </StyledDialogHeader>
         <form>
           <TextField
@@ -47,9 +56,14 @@ export function FolderForm({
             error={errors.folder_name?.message}
           />
           <DialogFooter>
-            <Button isLoading={isSubmitting} onClick={handleSubmit(onSubmit)}>
+            <DialogClose asChild>
+              <Button color='slate' variant='soft' disabled={isSubmitting} type='button'>
+                Hủy bỏ
+              </Button>
+            </DialogClose>
+            <StyledSubmitButton isLoading={isSubmitting} onClick={handleSubmit(onSubmit)}>
               {submitText}
-            </Button>
+            </StyledSubmitButton>
           </DialogFooter>
         </form>
       </DialogContent>
@@ -59,4 +73,8 @@ export function FolderForm({
 
 const StyledDialogHeader = styled(DialogHeader)({
   marginBottom: '16px',
+})
+
+const StyledSubmitButton = styled(Button)({
+  minWidth: '80px',
 })

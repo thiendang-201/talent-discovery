@@ -7,7 +7,7 @@ export type ButtonProps = {
 } & ComponentProps<typeof StyledButton>
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ size = 'medium', isLoading, children, ...props }, ref) => {
+  ({ size = 'medium', isLoading, disabled, children, ...props }, ref) => {
     const loadingIconSize = {
       small: 10,
       medium: 14,
@@ -15,7 +15,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     }[size]
 
     return (
-      <StyledButton ref={ref} size={size} {...props} disabled={isLoading}>
+      <StyledButton ref={ref} size={size} {...props} disabled={isLoading || disabled}>
         {isLoading ? (
           <TailSpin
             visible={true}

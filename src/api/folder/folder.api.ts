@@ -1,6 +1,11 @@
 import axios from '../axiosInstant'
 import { PaginationPayload } from '../common.type'
-import { CreateFolderPayload, FolderResponse, GetFolderPayload } from './folder.type'
+import {
+  CreateFolderPayload,
+  EditFolderNamePayload,
+  FolderResponse,
+  GetFolderPayload,
+} from './folder.type'
 
 export async function getFolderList(params: GetFolderPayload & PaginationPayload) {
   const res = await axios.get<FolderResponse>('/folder/all', { params })
@@ -10,4 +15,8 @@ export async function getFolderList(params: GetFolderPayload & PaginationPayload
 
 export async function createFolder(payload: CreateFolderPayload) {
   await axios.post('/folder/create', payload)
+}
+
+export async function updateFolder(payload: EditFolderNamePayload) {
+  await axios.patch('/folder/update', payload)
 }

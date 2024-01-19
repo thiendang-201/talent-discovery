@@ -1,8 +1,19 @@
 import styled from '@emotion/styled'
 import { ContainerProps } from './FolderItem.type'
 
+export const MenuContainer = styled.div({
+  opacity: 0,
+  visibility: 'hidden',
+  position: 'absolute',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  right: '16px',
+  transition: 'opacity 0.15s ease-in-out',
+})
+
 export const Container = styled.div<ContainerProps>(
   {
+    cursor: 'pointer',
     padding: '16px',
     position: 'relative',
     display: 'grid',
@@ -16,6 +27,11 @@ export const Container = styled.div<ContainerProps>(
       top: 0,
       left: 0,
       width: '4px',
+    },
+
+    [`&:hover ${MenuContainer}, &:has(button[data-state="open"]) ${MenuContainer}`]: {
+      opacity: 1,
+      visibility: 'visible',
     },
   },
   ({ theme, isActive }) => ({
@@ -37,6 +53,7 @@ export const Icon = styled.div(({ theme }) => ({
   alignItems: 'center',
   aspectRatio: '1/1',
   borderRadius: '6px',
+  color: theme.colors.blue9,
 }))
 
 export const Title = styled.p(() => ({
