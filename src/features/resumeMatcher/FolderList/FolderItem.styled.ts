@@ -2,8 +2,8 @@ import styled from '@emotion/styled'
 import { ContainerProps } from './FolderItem.type'
 
 export const MenuContainer = styled.div({
-  opacity: 0,
-  visibility: 'hidden',
+  // opacity: 0,
+  // visibility: 'hidden',
   position: 'absolute',
   top: '50%',
   transform: 'translateY(-50%)',

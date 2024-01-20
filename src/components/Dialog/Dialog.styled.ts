@@ -35,30 +35,32 @@ const StyledDialogOverlay = styled(DialogPrimitive.Overlay)(props => ({
   },
 }))
 
-const StyledDialogContent = styled(DialogPrimitive.Content)<DialogContentProps>(props => ({
-  position: 'fixed',
-  left: '50%',
-  top: '50%',
-  zIndex: 50,
-  display: 'grid',
-  width: '100%',
-  maxWidth: props.maxWidth ?? '800px',
-  gap: '4px',
-  backgroundColor: props.theme.colors.background,
-  padding: '24px',
-  borderRadius: '12px',
-  transformOrigin: 'bottom left',
-  transform: 'scale(1) translate(-50%, -50%)',
-  transition: 'all 0.2s ease-in-out',
+const StyledDialogContent = styled(DialogPrimitive.Content)<DialogContentProps>(
+  ({ maxWidth, ...props }) => ({
+    position: 'fixed',
+    left: '50%',
+    top: '50%',
+    zIndex: 50,
+    display: 'grid',
+    width: '100%',
+    maxWidth: maxWidth ?? '800px',
+    gap: '4px',
+    backgroundColor: props.theme.colors.background,
+    padding: '24px',
+    borderRadius: '12px',
+    transformOrigin: 'bottom left',
+    transform: 'scale(1) translate(-50%, -50%)',
+    transition: 'all 0.2s ease-in-out',
 
-  "&[data-state='open']": {
-    animation: `${fadeIn} 0.2s ease-in-out, ${slideTopIn} 0.2s ease-in-out`,
-  },
+    "&[data-state='open']": {
+      animation: `${fadeIn} 0.2s ease-in-out, ${slideTopIn} 0.2s ease-in-out`,
+    },
 
-  "&[data-state='closed']": {
-    animation: `${fadeOut} 0.2s ease-in-out, ${slideTopOut} 0.2s ease-in-out`,
-  },
-}))
+    "&[data-state='closed']": {
+      animation: `${fadeOut} 0.2s ease-in-out, ${slideTopOut} 0.2s ease-in-out`,
+    },
+  })
+)
 
 const StyledHeader = styled.div({
   display: 'flex',

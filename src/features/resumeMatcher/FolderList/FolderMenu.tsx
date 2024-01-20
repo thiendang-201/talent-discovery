@@ -4,10 +4,11 @@ import * as DropdownMenu from '@components/DropdownMenu'
 import { RiMoreFill } from 'react-icons/ri'
 import { FolderForm } from './FolderForm'
 import { SubmitFolderFormFn } from './FolderForm.type'
-import { useUpdateFolder } from '@/api/folder'
+import { useRemoveFolder, useUpdateFolder } from '@/api/folder'
 import { useQueryClient } from '@tanstack/react-query'
 import { QUERY_KEYS } from '@/constants'
 import { useMemo } from 'react'
+import { RemoveDialog } from '@components/RemoveDialog'
 
 type FolderMenuProps = {
   folder_id: string
@@ -15,8 +16,10 @@ type FolderMenuProps = {
 }
 
 export function FolderMenu({ folder_id, folder_name }: FolderMenuProps) {
-  const [isVisible, modalHandler] = useVisible()
+  const [isEditFolderModalVisible, editFolderModalHandler] = useVisible()
+  const [isRemoveFolderModalVisible, removeFolderModalHandler] = useVisible()
   const { mutateAsync: updateFolder } = useUpdateFolder()
+  const { mutate: removeFolder, isPending: isRemoving } = useRemoveFolder()
   const queryClient = useQueryClient()
 
   const defaultFolderFormValues = useMemo(
@@ -28,7 +31,7 @@ export function FolderMenu({ folder_id, folder_name }: FolderMenuProps) {
 
   const onChangeFolderNameSuccess = () => {
     queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.FOLDER_LIST] })
-    modalHandler.off()
+    editFolderModalHandler.off()
   }
 
   const onChangeFolderName: SubmitFolderFormFn = ({ folder_name }) => {
@@ -42,6 +45,15 @@ export function FolderMenu({ folder_id, folder_name }: FolderMenuProps) {
     })
   }
 
+  const onRemoveFolderSuccess = () => {
+    queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.FOLDER_LIST] })
+    removeFolderModalHandler.off()
+  }
+
+  const onRemoveFolder = () => {
+    removeFolder(folder_id, { onSuccess: onRemoveFolderSuccess })
+  }
+
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
@@ -51,20 +63,30 @@ export function FolderMenu({ folder_id, folder_name }: FolderMenuProps) {
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.StyledContent sideOffset={8} align='end' forceMount>
-          <DropdownMenu.StyledItem onClick={modalHandler.on}>
+          <DropdownMenu.StyledItem onClick={editFolderModalHandler.on}>
             Đổi tên Thư mục
           </DropdownMenu.StyledItem>
           <DropdownMenu.StyledSeparator />
-          <DropdownMenu.StyledItem>Xóa thư mục</DropdownMenu.StyledItem>
+          <DropdownMenu.StyledItem onClick={removeFolderModalHandler.on}>
+            Xóa thư mục
+          </DropdownMenu.StyledItem>
         </DropdownMenu.StyledContent>
       </DropdownMenu.Portal>
       <FolderForm
-        isVisible={isVisible}
+        isVisible={isEditFolderModalVisible}
         onSubmit={onChangeFolderName}
-        changeVisible={modalHandler.changeVisible}
+        changeVisible={editFolderModalHandler.changeVisible}
         submitText='Lưu'
         heading='Đổi tên thư mục'
         defaultValues={defaultFolderFormValues}
+      />
+      <RemoveDialog
+        isPending={isRemoving}
+        isVisible={isRemoveFolderModalVisible}
+        changeVisible={removeFolderModalHandler.changeVisible}
+        heading='Xóa thư mục'
+        removeMsg={`Toàn bộ CV hồ sơ trong thư mục ${folder_name} sẽ bị xóa khỏi hệ thống!`}
+        onConfirm={onRemoveFolder}
       />
     </DropdownMenu.Root>
   )

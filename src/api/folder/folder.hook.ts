@@ -1,6 +1,6 @@
 import { MUTATION_KEYS, QUERY_KEYS } from '@/constants'
 import { useInfiniteQuery, useMutation } from '@tanstack/react-query'
-import { createFolder, getFolderList, updateFolder } from './folder.api'
+import { createFolder, getFolderList, removeFolder, updateFolder } from './folder.api'
 import { GetFolderPayload } from './folder.type'
 
 export function useFolderList({ search_value }: GetFolderPayload) {
@@ -29,5 +29,12 @@ export function useUpdateFolder() {
   return useMutation({
     mutationKey: [MUTATION_KEYS.UPDATE_FOLDER],
     mutationFn: updateFolder,
+  })
+}
+
+export function useRemoveFolder() {
+  return useMutation({
+    mutationKey: [MUTATION_KEYS.REMOVE_FOLDER],
+    mutationFn: removeFolder,
   })
 }

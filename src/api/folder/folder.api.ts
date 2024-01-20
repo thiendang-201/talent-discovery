@@ -20,3 +20,7 @@ export async function createFolder(payload: CreateFolderPayload) {
 export async function updateFolder(payload: EditFolderNamePayload) {
   await axios.patch('/folder/update', payload)
 }
+
+export async function removeFolder(folder_id: string) {
+  await axios.delete('/folder/remove/' + folder_id)
+}
