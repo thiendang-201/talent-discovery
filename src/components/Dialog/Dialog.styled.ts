@@ -36,14 +36,14 @@ const StyledDialogOverlay = styled(DialogPrimitive.Overlay)(props => ({
 }))
 
 const StyledDialogContent = styled(DialogPrimitive.Content)<DialogContentProps>(
-  ({ maxWidth, ...props }) => ({
+  ({ maxSize, ...props }) => ({
     position: 'fixed',
     left: '50%',
     top: '50%',
     zIndex: 50,
     display: 'grid',
     width: '100%',
-    maxWidth: maxWidth ?? '800px',
+    maxWidth: maxSize ?? '800px',
     gap: '4px',
     backgroundColor: props.theme.colors.background,
     padding: '24px',

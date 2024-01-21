@@ -3,7 +3,7 @@ import { FolderListProps } from './FolderList.type'
 import { FolderItem } from './FolderItem'
 import { useDebounce } from '@uidotdev/usehooks'
 import { FolderListHeader } from './FolderListHeader'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useFolderList } from '@/api/folder'
 import { ScrollArea } from '@components/ScrollView'
 import { useInView } from 'react-intersection-observer'
@@ -16,26 +16,27 @@ export function FolderList({ className }: FolderListProps) {
     data: folderList = [],
     isFetchingNextPage,
     fetchNextPage,
+    hasNextPage,
   } = useFolderList({ search_value: debouncedSearchValue })
 
   useEffect(() => {
-    console.log(inView, isFetchingNextPage)
+    inView && hasNextPage && !isFetchingNextPage && fetchNextPage()
+  }, [fetchNextPage, hasNextPage, inView, isFetchingNextPage])
 
-    inView && !isFetchingNextPage && fetchNextPage()
-  }, [fetchNextPage, inView, isFetchingNextPage])
+  const folderListElm = useMemo(() => {
+    return folderList.map((folder, index) => (
+      <FolderItem
+        ref={index === folderList.length - 1 ? lastElmRef : null}
+        {...folder}
+        key={folder.folder_id}
+      />
+    ))
+  }, [folderList, lastElmRef])
 
   return (
     <Container className={className}>
       <FolderListHeader searchValue={searchValue} changeSearchValue={setSearchValue} />
-      <ScrollArea>
-        {folderList.map((folder, index) => (
-          <FolderItem
-            ref={index === folderList.length - 1 ? lastElmRef : null}
-            {...folder}
-            key={folder.folder_id}
-          />
-        ))}
-      </ScrollArea>
+      <ScrollArea>{folderListElm}</ScrollArea>
     </Container>
   )
 }

@@ -9,8 +9,6 @@ export function FilterValue({ value }: FilterValueProps) {
   const addFilterValue = useResumeFilterStore(state => state.addFilterValue)
 
   const handleAddFilterValue = () => {
-    console.log({ value })
-
     addFilterValue({ value, isRequired: false })
   }
 

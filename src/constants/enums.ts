@@ -14,4 +14,6 @@ export enum FILTER_CATEGORIES {
 
 export enum API_ERROR_TYPES {
   USER_FORBIDEN = 'user.forbidden',
+  DUPLICATED_FILE = 'file.duplicated',
+  INVALID_CV = 'file.not.resume',
 }

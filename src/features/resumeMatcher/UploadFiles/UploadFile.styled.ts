@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { UploadStatusProps } from './UploadFile.type'
 
 export const Container = styled.div({
   display: 'flex',
@@ -9,6 +10,7 @@ export const Container = styled.div({
 
 export const ContentContainer = styled.div({
   display: 'flex',
+  justifyContent: 'space-between',
 })
 
 export const FileInfoContainer = styled.div({
@@ -25,8 +27,24 @@ export const FileName = styled.p(({ theme }) => ({
   marginRight: 'auto',
 }))
 
-export const FileSize = styled.p(({ theme }) => ({
+export const UploadStatus = styled.p<UploadStatusProps>(({ theme, status }) => {
+  const color = {
+    pending: theme.colors.blue9,
+    uploading: theme.colors.blue9,
+    processing: theme.colors.blue9,
+    success: theme.colors.grass9,
+    error: theme.colors.red9,
+  }[status]
+
+  return {
+    fontSize: '12px',
+    lineHeight: '14px',
+    color,
+  }
+})
+
+export const UploadSize = styled.p(({ theme }) => ({
+  color: theme.colors.slate9,
   fontSize: '12px',
   lineHeight: '14px',
-  color: theme.colors.slate9,
 }))

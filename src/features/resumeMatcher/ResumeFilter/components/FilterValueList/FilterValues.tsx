@@ -15,8 +15,6 @@ export function FilterValues({ searchCategoryValue }: FilterValuesProps) {
   const currentFilterCategory = useResumeFilterStore(state => state.currentFilterCategory)
   const selectedValues = useResumeFilterValues('current')
 
-  console.log(searchCategoryValue)
-
   const filterValueOptions = useMemo(() => {
     return itJobPositions.filter(
       value => !selectedValues.find(selectedValue => selectedValue.value === value)

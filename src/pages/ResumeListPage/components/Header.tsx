@@ -12,12 +12,12 @@ import { StyledHeader, StyledHeaderRight, StyledSubHeader } from '../ResumeListP
 import { useTheme } from '@emotion/react'
 import { useState } from 'react'
 import { VIEW_MODE } from '@/constants'
-import { useUploadResumes } from '@features/resumeMatcher'
+import { useUploadResumesStore } from '@features/resumeMatcher'
 
 export function ResumeListPageHeader() {
   const { colors } = useTheme()
   const [viewMode, setViewMode] = useState(VIEW_MODE.grid)
-  const openUploadResumeDialog = useUploadResumes(state => state.openUploadResumeDialog)
+  const openUploadResumeDialog = useUploadResumesStore(state => state.openUploadResumeDialog)
 
   return (
     <>

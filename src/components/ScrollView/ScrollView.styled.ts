@@ -10,6 +10,7 @@ export const StyledViewport = styled(ScrollAreaPrimitive.Viewport)({
   height: '100%',
   width: '100%',
   borderRadius: 'inherit',
+  maxHeight: 'inherit',
 })
 
 export const StyledScrollAreaScrollbar = styled(ScrollAreaPrimitive.ScrollAreaScrollbar)(

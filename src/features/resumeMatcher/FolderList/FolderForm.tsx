@@ -45,7 +45,7 @@ export function FolderForm({
 
   return (
     <Dialog open={isVisible} onOpenChange={isSubmitting ? undefined : changeVisible}>
-      <DialogContent maxWidth={400}>
+      <DialogContent maxSize={400}>
         <StyledDialogHeader>
           <DialogTitle>{heading}</DialogTitle>
         </StyledDialogHeader>

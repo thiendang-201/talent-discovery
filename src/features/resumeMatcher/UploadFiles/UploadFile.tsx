@@ -1,24 +1,49 @@
-// import { useState } from 'react'
 import { Progress } from '@components/Progress'
 import prettyBytes from 'pretty-bytes'
-import { Container, ContentContainer, FileName, FileSize } from './UploadFile.styled'
+import {
+  Container,
+  ContentContainer,
+  FileName,
+  UploadSize,
+  UploadStatus,
+} from './UploadFile.styled'
+import { UploadStateRecord } from '../stores'
+import { useTheme } from '@emotion/react'
 
-type UploadFileProps = {
-  file: File
+export type UploadFileProps = {
+  fileName: string
+  uploadState: UploadStateRecord
 }
 
-export function UploadFile({ file }: UploadFileProps) {
-  // const [progress, setProgress] = useState(0)
+export function UploadFile({ fileName, uploadState }: UploadFileProps) {
+  const { colors } = useTheme()
+
+  const { states, uploadedBytes, totalBytes } = uploadState
+  const progress = Math.round((uploadedBytes / totalBytes) * 100)
+  const latestStateIndex = states.length - 1
+  const latestState = states[latestStateIndex]
+
+  const getProgressBarColor = () => {
+    switch (latestState.status) {
+      case 'error':
+        return colors.red9
+      case 'success':
+        return colors.grass9
+      default:
+        return colors.blue9
+    }
+  }
 
   return (
     <Container>
+      <FileName>{fileName}</FileName>
+      <Progress value={progress} color={getProgressBarColor()} />
       <ContentContainer>
-        <FileName>{file.name}</FileName>
-        <FileSize>
-          Đang tải lên: {prettyBytes(file.size)}/{prettyBytes(file.size)}
-        </FileSize>
+        <UploadSize>
+          Đã tải lên: {prettyBytes(uploadedBytes)}/{prettyBytes(totalBytes)}`
+        </UploadSize>
+        <UploadStatus status={latestState.status}>{latestState.message}</UploadStatus>
       </ContentContainer>
-      <Progress value={60} />
     </Container>
   )
 }

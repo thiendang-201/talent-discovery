@@ -20,11 +20,9 @@ export function RemoveDialog({
   changeVisible,
   onConfirm,
 }: RemoveDialogProps) {
-  console.log(isPending)
-
   return (
     <Dialog open={isVisible} onOpenChange={changeVisible}>
-      <StyledContent maxWidth='400px'>
+      <StyledContent maxSize='400px'>
         <StyledIconBox>
           <FaTrashAlt size={70} />
         </StyledIconBox>

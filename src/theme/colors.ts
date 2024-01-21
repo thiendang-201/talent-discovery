@@ -33,6 +33,8 @@ import {
   redDark,
   green,
   greenDark,
+  grass,
+  grassDark,
 } from '@radix-ui/colors'
 
 export const lightColors = {
@@ -54,6 +56,7 @@ export const lightColors = {
   ...violet,
   ...red,
   ...green,
+  ...grass,
   background: '#ffffff',
 }
 
@@ -76,5 +79,6 @@ export const darkColors = {
   ...violetDark,
   ...redDark,
   ...greenDark,
+  ...grassDark,
   background: slateDark.slate1,
 }

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { StyledUploadContainerProps } from './UploadDialog.type'
-import { DialogHeader } from '@components/Dialog'
+import { DialogContent, DialogHeader } from '@components/Dialog'
 
 export const UploadContainer = styled.div<StyledUploadContainerProps>(
   {
@@ -57,6 +57,12 @@ export const StyledHeader = styled(DialogHeader)({
   alignItems: 'center',
 })
 
+export const ActionButtonWrapper = styled.div({
+  display: 'flex',
+  flexDirection: 'row',
+  gap: '2px',
+})
+
 export const SupportInfoContainer = styled.div({
   display: 'flex',
   justifyContent: 'space-between',
@@ -67,3 +73,12 @@ export const SupportInfoText = styled.p(({ theme }) => ({
   color: theme.colors.slate9,
   fontSize: '12px',
 }))
+
+export const StyledDialogContent = styled(DialogContent)({
+  padding: 0,
+})
+
+export const TopContainer = styled.div({
+  padding: '24px',
+  paddingBottom: 0,
+})

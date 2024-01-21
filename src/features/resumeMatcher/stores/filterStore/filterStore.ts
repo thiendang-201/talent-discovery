@@ -10,8 +10,6 @@ import {
 } from './filterStore.type'
 import { FILTER_CATEGORIES } from '@/constants'
 
-console.log({ FILTER_CATEGORIES })
-
 const initialFilterValue: ResumeFilterStoreData = {
   currentFilterCategory: FILTER_CATEGORIES.JOB_TITLE,
   filterMap: new Map(),
@@ -87,8 +85,6 @@ export const useResumeFilterValues = <T extends UseFilterValuesCategory>(
       filterMap,
     })
   )
-
-  console.log(filterMap)
 
   if (category === 'current') {
     const values = filterMap.get(currentFilterCategory) ?? []
