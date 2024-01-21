@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import svgr from 'vite-plugin-svgr'
 import path from 'path'
 
 // https://vitejs.dev/config/
@@ -9,6 +10,7 @@ export default defineConfig({
       jsxImportSource: '@emotion/react',
       plugins: [['@swc/plugin-emotion', {}]],
     }),
+    svgr(),
   ],
   server: {
     port: 3000,
@@ -24,6 +26,7 @@ export default defineConfig({
       '@components': path.resolve(__dirname, 'src/components'),
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@features': path.resolve(__dirname, 'src/features'),
+      '@illustrations': path.resolve(__dirname, 'src/assets/illustrations'),
       '@': path.resolve(__dirname, './src'),
     },
   },

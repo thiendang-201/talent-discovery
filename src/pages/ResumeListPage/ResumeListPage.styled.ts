@@ -24,3 +24,11 @@ export const StyledSubHeader = styled(HeaderContainer)({})
 export const ContentContainer = styled(ScrollArea)({
   height: '100vh',
 })
+
+export const NoFolderSelectedContainer = styled.div({
+  gridColumn: '2 / span 2',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+})

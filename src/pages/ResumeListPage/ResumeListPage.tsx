@@ -1,5 +1,12 @@
-import { Container, StyledFolders, ContentContainer } from './ResumeListPage.styled'
+import {
+  Container,
+  StyledFolders,
+  ContentContainer,
+  NoFolderSelectedContainer,
+} from './ResumeListPage.styled'
 import { FileList, ResumeFilter } from '@features/resumeMatcher'
+import { useParams } from 'react-router-dom'
+import SelectFolderIllustration from '@illustrations/select-folder.svg?react'
 import { ResumeListPageHeader } from './components'
 
 // mock
@@ -52,14 +59,25 @@ const files = [
 ]
 
 export default function ResumeListPage() {
+  const { folderId } = useParams()
+
   return (
     <Container>
       <StyledFolders />
-      <ContentContainer>
-        <ResumeListPageHeader />
-        <FileList files={files} />
-      </ContentContainer>
-      <ResumeFilter />
+      {folderId ? (
+        <>
+          <ContentContainer>
+            <ResumeListPageHeader />
+            <FileList files={files} />
+          </ContentContainer>
+          <ResumeFilter />
+        </>
+      ) : (
+        <NoFolderSelectedContainer>
+          <SelectFolderIllustration width={300} height={300} />
+          <p>Vui lòng chọn một thư mục !!!</p>
+        </NoFolderSelectedContainer>
+      )}
     </Container>
   )
 }

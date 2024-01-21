@@ -20,16 +20,21 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    "preserveSymlinks": true,
+
     "baseUrl": ".",
     "paths": {
       "@theme": ["src/theme/index.ts"],
       "@layout": ["src/layout/index.ts"],
       "@routes": ["src/routes/index.ts"],
 
+      "@illustrations/*": ["src/assets/illustrations/*"],
       "@pages/*": ["src/pages/*"],
       "@features/*": ["src/features/*"],
       "@components/*": ["src/components/*"],
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+
+      "vite": ["node_modules/vite"]
     }
   },
   "include": ["src"],
