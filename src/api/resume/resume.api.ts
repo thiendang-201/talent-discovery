@@ -1,5 +1,5 @@
 import axios from '../axiosInstant'
-import { UploadResumePayload } from './resume.type'
+import { GetKeywordPayload, KeywordResponse, UploadResumePayload } from './resume.type'
 
 export async function uploadResume({ file, folder_id, onUploadProgress }: UploadResumePayload) {
   await axios.post(
@@ -16,4 +16,9 @@ export async function uploadResume({ file, folder_id, onUploadProgress }: Upload
       timeout: 1000 * 60 * 2,
     }
   )
+}
+
+export async function getKeywords(params: GetKeywordPayload) {
+  const rs = await axios.get<KeywordResponse>('/resume/keywords', { params })
+  return rs.data
 }

@@ -6,6 +6,7 @@ import {
 import { FilterValue } from '../FilterValue'
 import { useMemo } from 'react'
 import { Header, StyledTitle } from './FilterValueList.styled'
+import { useKeywords } from '@api/resume'
 
 type FilterValuesProps = {
   searchCategoryValue: string
@@ -14,12 +15,17 @@ type FilterValuesProps = {
 export function FilterValues({ searchCategoryValue }: FilterValuesProps) {
   const currentFilterCategory = useResumeFilterStore(state => state.currentFilterCategory)
   const selectedValues = useResumeFilterValues('current')
+  const { data: keywords = [] } = useKeywords({
+    search_value: searchCategoryValue,
+    keyword_type: currentFilterCategory,
+  })
 
   const filterValueOptions = useMemo(() => {
-    return itJobPositions.filter(
-      value => !selectedValues.find(selectedValue => selectedValue.value === value)
+    return keywords.filter(
+      keyword =>
+        !selectedValues.find(selectedValue => selectedValue.value === keyword.keyword_value)
     )
-  }, [selectedValues])
+  }, [keywords, selectedValues])
 
   return (
     <div>
@@ -27,45 +33,10 @@ export function FilterValues({ searchCategoryValue }: FilterValuesProps) {
         <StyledTitle>{`Danh sách ${CATEGORY_LABEL_MAP[currentFilterCategory]}`}</StyledTitle>
       </Header>
       <div>
-        {filterValueOptions.map(value => (
-          <FilterValue value={value} key={value} />
+        {filterValueOptions.map(keyword => (
+          <FilterValue value={keyword.keyword_value} key={keyword.keyword_value} />
         ))}
       </div>
     </div>
   )
 }
-
-const itJobPositions = [
-  'Front-end Developer',
-  'Back-end Developer',
-  'Full Stack Developer',
-  'UI/UX Designer',
-  'DevOps Engineer',
-  'Software Engineer',
-  'QA Engineer',
-  'Mobile App Developer',
-  'Data Scientist',
-  'Cloud Solutions Architect',
-  'Network Administrator',
-  'Security Analyst',
-  'Database Administrator',
-  'Systems Analyst',
-  'IT Project Manager',
-  'Blockchain Developer',
-  'Machine Learning Engineer',
-  'Web Security Specialist',
-  'IT Support Specialist',
-  'AI Programmer',
-  'AI Programmer1',
-  'AI Programmer2',
-  'AI Programmer3',
-  'AI Programmer4',
-  'AI Programmer5',
-  'AI Programmer6',
-  'AI Programmer7',
-  'AI Programmer8',
-  'AI Programmer9',
-  'AI Programmer10',
-  'AI Programmer11',
-  'AI Programmer12',
-]
