@@ -8,7 +8,13 @@ export function FileList({ files }: FileListProps) {
     <ScrollArea>
       <GridView>
         {files.map(file => (
-          <FileItem key={file.id} {...file} />
+          <FileItem
+            key={file.resume_id}
+            candidateName={file.full_name}
+            jobTitle={file.job_title}
+            id={file.resume_id}
+            thumbnail={file.resume_thumbnail_url}
+          />
         ))}
       </GridView>
     </ScrollArea>

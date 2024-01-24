@@ -41,16 +41,16 @@ export const Title = styled.div({
   lineHeight: '14px',
 })
 
-export const ToggleRequiredButton = styled.button<Pick<ResumeFilterValue, 'isRequired'>>(
-  ({ isRequired, theme }) => ({
+export const ToggleRequiredButton = styled.button<Pick<ResumeFilterValue, 'required'>>(
+  ({ required, theme }) => ({
     borderRadius: '999px',
     fontSize: '10px',
     fontWeight: 500,
     lineHeight: '12px',
     display: 'flex',
-    color: isRequired ? theme.colors.iris9 : theme.colors.blue9,
-    backgroundColor: isRequired ? theme.colors.iris3 : theme.colors.blue3,
-    border: `1px solid ${isRequired ? theme.colors.iris5 : theme.colors.blue5}`,
+    color: required ? theme.colors.iris9 : theme.colors.blue9,
+    backgroundColor: required ? theme.colors.iris3 : theme.colors.blue3,
+    border: `1px solid ${required ? theme.colors.iris5 : theme.colors.blue5}`,
     alignItems: 'center',
     marginTop: '2px',
     paddingInline: '2px 8px',

@@ -11,7 +11,7 @@ import {
 } from './FileItem.styled'
 import { FileMenu } from './FileMenu'
 
-export function FileItem({ candidateName, jobTitle }: FileItemProps) {
+export function FileItem({ candidateName, jobTitle, thumbnail }: FileItemProps) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   const onMenuOpenChange = () => {
@@ -21,7 +21,7 @@ export function FileItem({ candidateName, jobTitle }: FileItemProps) {
   return (
     <Container ref={containerRef}>
       <Header>
-        <PreviewCV src='https://cdn1.vieclam24h.vn/images/assets/img/cv33-1D1B21.png' />
+        <PreviewCV src={thumbnail} />
       </Header>
       <Body>
         <BodyLeft>
@@ -40,4 +40,5 @@ export type FileItemProps = {
   id: string
   candidateName: string
   jobTitle: string
+  thumbnail: string
 }

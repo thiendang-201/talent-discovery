@@ -29,3 +29,25 @@ export type KeywordData = {
 }
 
 export type KeywordResponse = KeywordData[]
+
+export type ResumeData = {
+  resume_id: string
+  full_name: string
+  job_title: string
+  resume_thumbnail_url: string
+}
+
+export type SearchOption = {
+  value: string
+  required: boolean
+}
+
+export type SearchResumesPayload = {
+  folder_id: string
+  job_title: string
+  awards: SearchOption[]
+  certificates: SearchOption[]
+  educations: SearchOption[]
+  languages: SearchOption[]
+  skills: SearchOption[]
+}

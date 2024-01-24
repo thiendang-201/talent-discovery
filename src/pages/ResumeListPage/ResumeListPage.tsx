@@ -3,63 +3,27 @@ import {
   StyledFolders,
   ContentContainer,
   NoFolderSelectedContainer,
+  NoResumeFounded,
 } from './ResumeListPage.styled'
-import { FileList, ResumeFilter } from '@features/resumeMatcher'
+import { FileList, ResumeFilter, useResumeFilterStore } from '@features/resumeMatcher'
 import { useParams } from 'react-router-dom'
 import SelectFolderIllustration from '@illustrations/select-folder.svg?react'
 import { ResumeListPageHeader } from './components'
-
-// mock
-const files = [
-  {
-    id: '1',
-    candidateName: 'Nguyen Van A',
-    jobTitle: 'Fresher ReactJS',
-  },
-  {
-    id: '2',
-    candidateName: 'Nguyen Van A',
-    jobTitle: 'Fresher ReactJS',
-  },
-  {
-    id: '3',
-    candidateName: 'Nguyen Van A',
-    jobTitle: 'Fresher ReactJS',
-  },
-  {
-    id: '4',
-    candidateName: 'Nguyen Van A',
-    jobTitle: 'Fresher ReactJS',
-  },
-  {
-    id: '5',
-    candidateName: 'Nguyen Van A',
-    jobTitle: 'Fresher ReactJS',
-  },
-  {
-    id: '6',
-    candidateName: 'Nguyen Van A',
-    jobTitle: 'Fresher ReactJS',
-  },
-  {
-    id: '7',
-    candidateName: 'Nguyen Van A',
-    jobTitle: 'Fresher ReactJS',
-  },
-  {
-    id: '8',
-    candidateName: 'Nguyen Van A',
-    jobTitle: 'Fresher ReactJS',
-  },
-  {
-    id: '9',
-    candidateName: 'Nguyen Van A',
-    jobTitle: 'Fresher ReactJS',
-  },
-]
+import { useSearchResume } from '@api/resume'
+import { FILTER_CATEGORIES } from '@/constants'
 
 export default function ResumeListPage() {
-  const { folderId } = useParams()
+  const { folderId = '' } = useParams()
+  const filter = useResumeFilterStore(state => state.filterMap)
+  const { data: resumes = [] } = useSearchResume({
+    folder_id: folderId,
+    job_title: filter.get(FILTER_CATEGORIES.JOB_TITLE)?.at(0)?.value ?? '',
+    awards: filter.get(FILTER_CATEGORIES.AWARD) ?? [],
+    certificates: filter.get(FILTER_CATEGORIES.CERTIFICATION) ?? [],
+    educations: filter.get(FILTER_CATEGORIES.EDUCATION) ?? [],
+    languages: filter.get(FILTER_CATEGORIES.LANGUAGE) ?? [],
+    skills: filter.get(FILTER_CATEGORIES.SKILL) ?? [],
+  })
 
   return (
     <Container>
@@ -68,7 +32,11 @@ export default function ResumeListPage() {
         <>
           <ContentContainer>
             <ResumeListPageHeader />
-            <FileList files={files} />
+            {resumes.length ? (
+              <FileList files={resumes} />
+            ) : (
+              <NoResumeFounded>Không có hồ sơ nào!</NoResumeFounded>
+            )}
           </ContentContainer>
           <ResumeFilter />
         </>

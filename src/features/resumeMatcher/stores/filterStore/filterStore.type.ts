@@ -4,7 +4,7 @@ export type ResumeSortBy = 'name' | 'matchScore'
 
 export type ResumeFilterValue = {
   value: string
-  isRequired: boolean
+  required: boolean
 }
 
 export type ResumeFilterStoreData = {

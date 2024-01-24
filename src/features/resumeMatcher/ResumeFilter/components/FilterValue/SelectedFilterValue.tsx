@@ -8,7 +8,7 @@ export type SelectedFilterValueProps = {
   index: number
 } & ResumeFilterValue
 
-export function SelectedFilterValue({ value, isRequired, index }: SelectedFilterValueProps) {
+export function SelectedFilterValue({ value, required, index }: SelectedFilterValueProps) {
   const toggleFilterValueRequired = useResumeFilterStore(state => state.toggleFilterValueRequired)
   const removeFilterValue = useResumeFilterStore(state => state.removeFilterValue)
 
@@ -21,12 +21,12 @@ export function SelectedFilterValue({ value, isRequired, index }: SelectedFilter
   }
 
   return (
-    <Container isSelected isRequired={isRequired}>
+    <Container isSelected isRequired={required}>
       <LeftBox>
         <Title>{value}</Title>
-        <ToggleRequiredButton isRequired={isRequired} onClick={handleToggleRequired}>
+        <ToggleRequiredButton required={required} onClick={handleToggleRequired}>
           <CgArrowsExchangeAltV size={16} />
-          <span>{isRequired ? 'Bắt buộc' : 'Tùy chọn'}</span>
+          <span>{required ? 'Bắt buộc' : 'Tùy chọn'}</span>
         </ToggleRequiredButton>
       </LeftBox>
       <IconButton size='small' variant='clear' color='none' onClick={handleRemoveFilterValue}>

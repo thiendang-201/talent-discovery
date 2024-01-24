@@ -1,8 +1,13 @@
 import { MUTATION_KEYS, QUERY_KEYS } from '@/constants'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { getKeywords, uploadResume } from './resume.api'
+import { getKeywords, searchResumes, uploadResume } from './resume.api'
 import { APIError } from '../common.type'
-import { GetKeywordPayload, UploadResumeOptions, UploadResumePayload } from './resume.type'
+import {
+  GetKeywordPayload,
+  SearchResumesPayload,
+  UploadResumeOptions,
+  UploadResumePayload,
+} from './resume.type'
 
 export function useUploadResume(options?: UploadResumeOptions) {
   return useMutation<void, APIError, UploadResumePayload>({
@@ -16,5 +21,12 @@ export function useKeywords(params: GetKeywordPayload) {
   return useQuery({
     queryKey: [QUERY_KEYS.KEYWORD_LIST, params],
     queryFn: () => getKeywords(params),
+  })
+}
+
+export function useSearchResume(payload: SearchResumesPayload) {
+  return useQuery({
+    queryKey: [QUERY_KEYS.SEARCH_RESUME, payload],
+    queryFn: () => searchResumes(payload),
   })
 }

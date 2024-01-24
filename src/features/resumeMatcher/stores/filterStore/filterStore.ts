@@ -57,7 +57,7 @@ export const useResumeFilterStore = create<ResumeFilterValues>()(
         const filterValue = state.filterMap.get(category)?.at(index)
 
         if (filterValue) {
-          filterValue.isRequired = !filterValue.isRequired
+          filterValue.required = !filterValue.required
         }
       })
     },

@@ -1,5 +1,11 @@
 import axios from '../axiosInstant'
-import { GetKeywordPayload, KeywordResponse, UploadResumePayload } from './resume.type'
+import {
+  GetKeywordPayload,
+  KeywordResponse,
+  ResumeData,
+  SearchResumesPayload,
+  UploadResumePayload,
+} from './resume.type'
 
 export async function uploadResume({ file, folder_id, onUploadProgress }: UploadResumePayload) {
   await axios.post(
@@ -20,5 +26,10 @@ export async function uploadResume({ file, folder_id, onUploadProgress }: Upload
 
 export async function getKeywords(params: GetKeywordPayload) {
   const rs = await axios.get<KeywordResponse>('/resume/keywords', { params })
+  return rs.data
+}
+
+export async function searchResumes(payload: SearchResumesPayload) {
+  const rs = await axios.post<ResumeData[]>('/resume/search', payload)
   return rs.data
 }

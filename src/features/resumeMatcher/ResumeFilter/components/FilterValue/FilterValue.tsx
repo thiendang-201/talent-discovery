@@ -9,7 +9,7 @@ export function FilterValue({ value }: FilterValueProps) {
   const addFilterValue = useResumeFilterStore(state => state.addFilterValue)
 
   const handleAddFilterValue = () => {
-    addFilterValue({ value, isRequired: false })
+    addFilterValue({ value, required: false })
   }
 
   return (

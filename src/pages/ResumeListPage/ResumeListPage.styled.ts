@@ -32,3 +32,7 @@ export const NoFolderSelectedContainer = styled.div({
   alignItems: 'center',
   flexDirection: 'column',
 })
+
+export const NoResumeFounded = styled.p({
+  textAlign: 'center',
+})

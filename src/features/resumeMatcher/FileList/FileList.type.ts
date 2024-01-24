@@ -1,6 +1,6 @@
-import { FileItemProps } from './FileItem'
+import { ResumeData } from '@api/resume'
 
 export type FileListProps = {
   displayMode?: 'grid' | 'list'
-  files: FileItemProps[]
+  files: ResumeData[]
 }
