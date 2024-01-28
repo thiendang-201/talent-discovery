@@ -8,7 +8,7 @@ export function useFolderList({ search_value }: GetFolderPayload) {
     initialPageParam: 1,
     queryKey: [QUERY_KEYS.FOLDER_LIST, search_value],
     queryFn: ({ pageParam }) =>
-      getFolderList({ search_value: search_value, size: 20, page: pageParam }),
+      getFolderList({ search_value: search_value, size: 10, page: pageParam }),
     getNextPageParam: lastPage => {
       if (lastPage.page < lastPage.totalPages) return lastPage.page + 1
     },

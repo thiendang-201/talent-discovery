@@ -7,6 +7,7 @@ import { FilterValue } from '../FilterValue'
 import { useMemo } from 'react'
 import { Header, StyledTitle } from './FilterValueList.styled'
 import { useKeywords } from '@api/resume'
+import { LoaderWrapper } from '@components/LoaderWrapper'
 
 type FilterValuesProps = {
   searchCategoryValue: string
@@ -15,7 +16,7 @@ type FilterValuesProps = {
 export function FilterValues({ searchCategoryValue }: FilterValuesProps) {
   const currentFilterCategory = useResumeFilterStore(state => state.currentFilterCategory)
   const selectedValues = useResumeFilterValues('current')
-  const { data: keywords = [] } = useKeywords({
+  const { data: keywords = [], isLoading } = useKeywords({
     search_value: searchCategoryValue,
     keyword_type: currentFilterCategory,
   })
@@ -23,7 +24,9 @@ export function FilterValues({ searchCategoryValue }: FilterValuesProps) {
   const filterValueOptions = useMemo(() => {
     return keywords.filter(
       keyword =>
-        !selectedValues.find(selectedValue => selectedValue.value === keyword.keyword_value)
+        !selectedValues.find(
+          selectedValue => selectedValue.value.toLowerCase() === keyword.keyword_value.toLowerCase()
+        )
     )
   }, [keywords, selectedValues])
 
@@ -32,11 +35,11 @@ export function FilterValues({ searchCategoryValue }: FilterValuesProps) {
       <Header>
         <StyledTitle>{`Danh sách ${CATEGORY_LABEL_MAP[currentFilterCategory]}`}</StyledTitle>
       </Header>
-      <div>
+      <LoaderWrapper isLoading={isLoading} isEmpty={filterValueOptions.length === 0}>
         {filterValueOptions.map(keyword => (
           <FilterValue value={keyword.keyword_value} key={keyword.keyword_value} />
         ))}
-      </div>
+      </LoaderWrapper>
     </div>
   )
 }

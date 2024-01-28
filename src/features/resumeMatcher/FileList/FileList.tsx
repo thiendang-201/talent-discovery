@@ -1,13 +1,28 @@
-import { ScrollArea } from '@components/ScrollView'
 import { FileItem } from './FileItem'
 import { GridView } from './FileList.styled'
-import { FileListProps } from './FileList.type'
+import { useResumeFilterStore } from '../stores'
+import { useParams } from 'react-router-dom'
+import { useSearchResume } from '@api/resume'
+import { FILTER_CATEGORIES } from '@/constants'
+import { LoaderWrapper } from '@components/LoaderWrapper'
 
-export function FileList({ files }: FileListProps) {
+export function FileList() {
+  const { folderId = '' } = useParams()
+  const filter = useResumeFilterStore(state => state.filterMap)
+  const { data: resumes = [], isLoading } = useSearchResume({
+    folder_id: folderId,
+    job_title: filter.get(FILTER_CATEGORIES.JOB_TITLE)?.at(0)?.value ?? '',
+    awards: filter.get(FILTER_CATEGORIES.AWARD) ?? [],
+    certificates: filter.get(FILTER_CATEGORIES.CERTIFICATION) ?? [],
+    educations: filter.get(FILTER_CATEGORIES.EDUCATION) ?? [],
+    languages: filter.get(FILTER_CATEGORIES.LANGUAGE) ?? [],
+    skills: filter.get(FILTER_CATEGORIES.SKILL) ?? [],
+  })
+
   return (
-    <ScrollArea>
+    <LoaderWrapper isLoading={isLoading} isEmpty={resumes.length === 0}>
       <GridView>
-        {files.map(file => (
+        {resumes.map(file => (
           <FileItem
             key={file.resume_id}
             candidateName={file.full_name}
@@ -17,6 +32,6 @@ export function FileList({ files }: FileListProps) {
           />
         ))}
       </GridView>
-    </ScrollArea>
+    </LoaderWrapper>
   )
 }

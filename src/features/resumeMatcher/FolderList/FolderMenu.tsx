@@ -9,6 +9,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { QUERY_KEYS } from '@/constants'
 import { useMemo } from 'react'
 import { RemoveDialog } from '@components/RemoveDialog'
+import { useNavigate, useParams } from 'react-router-dom'
 
 type FolderMenuProps = {
   folder_id: string
@@ -21,6 +22,8 @@ export function FolderMenu({ folder_id, folder_name }: FolderMenuProps) {
   const { mutateAsync: updateFolder } = useUpdateFolder()
   const { mutate: removeFolder, isPending: isRemoving } = useRemoveFolder()
   const queryClient = useQueryClient()
+  const { folderId: selectedFolderId } = useParams()
+  const navigate = useNavigate()
 
   const defaultFolderFormValues = useMemo(
     () => ({
@@ -48,6 +51,7 @@ export function FolderMenu({ folder_id, folder_name }: FolderMenuProps) {
   const onRemoveFolderSuccess = () => {
     queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.FOLDER_LIST] })
     removeFolderModalHandler.off()
+    selectedFolderId === folder_id && navigate('/')
   }
 
   const onRemoveFolder = () => {

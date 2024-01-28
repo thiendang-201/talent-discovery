@@ -1,22 +1,14 @@
-import Button, { IconButton } from '@components/Button'
-import { ViewMode } from '@components/ViewMode'
+import Button from '@components/Button'
 import * as Header from '@components/Header'
-// import { FaCaretDown } from 'react-icons/fa'
-import {
-  RiFolderUserLine,
-  RiDeleteBin6Line,
-  RiShareForward2Fill,
-  RiFileUploadFill,
-} from 'react-icons/ri'
-import { StyledHeader, StyledHeaderRight, StyledSubHeader } from '../ResumeListPage.styled'
+import { RiFolderUserLine, RiFileUploadFill } from 'react-icons/ri'
+import { StyledHeader, StyledHeaderRight } from '../ResumeListPage.styled'
 import { useTheme } from '@emotion/react'
-import { useState } from 'react'
-import { VIEW_MODE } from '@/constants'
 import { useUploadResumesStore } from '@features/resumeMatcher'
+import { useLocation } from 'react-router-dom'
 
 export function ResumeListPageHeader() {
   const { colors } = useTheme()
-  const [viewMode, setViewMode] = useState(VIEW_MODE.grid)
+  const { state } = useLocation()
   const openUploadResumeDialog = useUploadResumesStore(state => state.openUploadResumeDialog)
 
   return (
@@ -25,30 +17,13 @@ export function ResumeListPageHeader() {
         <Header.Left>
           <RiFolderUserLine color={colors.slate12} size={22} />
         </Header.Left>
-        <Header.Heading>Tuyển dụng FE 08/2023</Header.Heading>
+        <Header.Heading>{state.folder_name}</Header.Heading>
         <StyledHeaderRight>
-          {/* <IconButton variant='clear' color='gray'>
-            <RiDeleteBin6Line size={16} />
-          </IconButton>
-          <IconButton variant='clear' color='gray'>
-            <RiShareForward2Fill size={16} />
-          </IconButton> */}
           <Button onClick={openUploadResumeDialog}>
             Tải lên <RiFileUploadFill size={16} />
           </Button>
         </StyledHeaderRight>
       </StyledHeader>
-      <StyledSubHeader>
-        <Header.Left>
-          {/* <Button variant='soft' color='gray'>
-            Bộ lọc <FaCaretDown />
-          </Button> */}
-        </Header.Left>
-        <div></div>
-        <StyledHeaderRight>
-          {/* <ViewMode mode={viewMode} onChangeMode={setViewMode} /> */}
-        </StyledHeaderRight>
-      </StyledSubHeader>
     </>
   )
 }

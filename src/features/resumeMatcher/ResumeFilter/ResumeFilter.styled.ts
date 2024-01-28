@@ -1,3 +1,5 @@
+import { IconButton } from '@components/Button'
+import { Input } from '@components/Input'
 import { ScrollArea } from '@components/ScrollView'
 import styled from '@emotion/styled'
 
@@ -42,4 +44,18 @@ export const SearchContainer = styled.div({
   display: 'flex',
   alignItems: 'center',
   paddingInline: '16px',
+  position: 'relative',
+})
+
+export const StyledAddKeywordBtn = styled(IconButton)({
+  position: 'absolute',
+  top: '50%',
+  right: '20px',
+  transform: 'translateY(-50%)',
+})
+
+export const StyledInput = styled(Input)({
+  '&:not(:placeholder-shown)': {
+    paddingRight: '30px',
+  },
 })

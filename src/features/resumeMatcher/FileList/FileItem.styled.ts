@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 export const Header = styled.div(
   ({ theme }) => ({
     backgroundColor: theme.colors.gray3,
+    cursor: 'pointer',
   }),
   {
     borderRadius: '8px',
@@ -43,7 +44,7 @@ export const Container = styled.div(
   })
 )
 
-export const PreviewCV = styled.img({
+export const StyledPreviewCV = styled.img({
   height: '100%',
 })
 

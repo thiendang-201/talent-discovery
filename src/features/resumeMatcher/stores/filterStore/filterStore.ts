@@ -14,8 +14,6 @@ const initialFilterValue: ResumeFilterStoreData = {
   currentFilterCategory: FILTER_CATEGORIES.JOB_TITLE,
   filterMap: new Map(),
   searchValue: '',
-  sortDirection: 'desc',
-  sortBy: 'name',
 }
 
 export const useResumeFilterStore = create<ResumeFilterValues>()(
@@ -26,7 +24,10 @@ export const useResumeFilterStore = create<ResumeFilterValues>()(
       set(state => {
         const category = state.currentFilterCategory
         const filterValues = state.filterMap.get(category)
-        const newFilterValues = filterValues ? [...filterValues, value] : [value]
+        const newFilterValues =
+          filterValues && category !== FILTER_CATEGORIES.JOB_TITLE
+            ? [...filterValues, value]
+            : [value]
 
         state.filterMap.set(category, newFilterValues)
       })
@@ -63,12 +64,6 @@ export const useResumeFilterStore = create<ResumeFilterValues>()(
     },
     changeSearchValue: searchValue => {
       set({ searchValue })
-    },
-    changeSortDirection: sortDirection => {
-      set({ sortDirection })
-    },
-    changeSortByValue: sortBy => {
-      set({ sortBy })
     },
     changeCurrentFilterCategory(currentFilterCategory) {
       set({ currentFilterCategory })

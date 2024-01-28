@@ -11,11 +11,19 @@ export const MenuContainer = styled.div({
   transition: 'opacity 0.15s ease-in-out',
 })
 
-export const Container = styled.div<ContainerProps>(
+export const Container = styled.div({
+  position: 'relative',
+  cursor: 'pointer',
+
+  [`&:hover ${MenuContainer}, &:has(button[data-state="open"]) ${MenuContainer}`]: {
+    opacity: 1,
+    visibility: 'visible',
+  },
+})
+
+export const ContentContainer = styled.div<ContainerProps>(
   {
-    cursor: 'pointer',
     padding: '16px',
-    position: 'relative',
     display: 'grid',
     gridTemplateColumns: '32px 1fr',
     gap: '12px',

@@ -11,8 +11,6 @@ export type ResumeFilterStoreData = {
   currentFilterCategory: FILTER_CATEGORIES
   filterMap: Map<FILTER_CATEGORIES, ResumeFilterValue[]>
   searchValue: string
-  sortDirection: SortDirection
-  sortBy: 'name' | 'matchScore'
 }
 
 export type ResumeFilterStoreActions = {
@@ -21,8 +19,6 @@ export type ResumeFilterStoreActions = {
   clearFilterValues: (clearMode: 'all' | 'current') => void
   toggleFilterValueRequired: (index: number) => void
   changeSearchValue: (value: string) => void
-  changeSortDirection: (value: SortDirection) => void
-  changeSortByValue: (value: ResumeSortBy) => void
   changeCurrentFilterCategory: (value: FILTER_CATEGORIES) => void
 }
 

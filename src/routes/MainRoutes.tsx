@@ -3,6 +3,7 @@ import Layout from '@layout'
 import ResumeListPage from '@pages/ResumeListPage'
 import LoginPage from '@pages/LoginPage'
 import { ProtectedRoute } from './ProtectedRoute'
+import { ResumeDetail } from '@features/resumeMatcher'
 
 export default function MainRoutes() {
   return (
@@ -18,6 +19,7 @@ export default function MainRoutes() {
         <Route index element={<Navigate to={'/resume-matcher'} />} />
         <Route path='resume-matcher' element={<ResumeListPage />} />
         <Route path='resume-matcher/:folderId' element={<ResumeListPage />} />
+        <Route path='resume/:resumeId' element={<ResumeDetail />} />
       </Route>
       <Route path='login' element={<LoginPage />} />
     </Routes>

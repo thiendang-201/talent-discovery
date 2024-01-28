@@ -16,7 +16,6 @@ export function FileMenu({ onMenuOpenChange }: FileMenuProps) {
           <DropdownMenu.Item />
 
           <DropdownMenu.Group>
-            <DropdownMenu.StyledItem>Mở trong tab mới</DropdownMenu.StyledItem>
             <DropdownMenu.StyledItem>Di chuyển</DropdownMenu.StyledItem>
             <DropdownMenu.StyledItem>Sao chép</DropdownMenu.StyledItem>
           </DropdownMenu.Group>

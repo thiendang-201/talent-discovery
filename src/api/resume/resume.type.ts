@@ -51,3 +51,81 @@ export type SearchResumesPayload = {
   languages: SearchOption[]
   skills: SearchOption[]
 }
+
+export type ResumeDetailData = {
+  resume_id: string
+  resume_thumbnail_url: string
+  job_title: string
+  full_name: string
+  email: string
+  phone_number: string
+  address: string
+  resume_file_path: string
+  resume_url: string
+  resume_skills: ResumeSkill[]
+  resume_references: ResumeReference[]
+  resume_awards: ResumeAward[]
+  resume_certifications: ResumeCertification[]
+  resume_educations: ResumeEducation[]
+  resume_languages: ResumeLanguage[]
+  resume_project_experiences: ResumeProjectExperience[]
+  resume_work_experiences: ResumeWorkExperience[]
+}
+
+export type ResumeWorkExperience = {
+  resume_work_experience_id: string
+  job_title: string
+  job_sumary: string
+  company_name: string
+  start_date: string
+  end_date: string
+}
+
+export type ResumeLanguage = {
+  resume_language_id: string
+  language_name: string
+}
+
+export type ResumeCertification = {
+  resume_certification_id: string
+  title: string
+  date: string
+}
+
+export type ResumeAward = {
+  resume_award_id: string
+  title: string
+  date: string
+}
+
+export type ResumeSkill = {
+  resume_skill_id: string
+  skill_name: string
+}
+
+export type ResumeReference = {
+  reference_id: string
+  reference_link: string
+}
+
+export type ResumeEducation = {
+  resume_education_id: string
+  name: string
+  start_date: string
+  end_date: string
+  major: string
+  gpa: number
+}
+
+export type ResumeProjectExperience = {
+  resume_project_experiences_id: string
+  project_name: string
+  project_description: string
+  project_technologies: string
+  responsibilities: string
+  repository_url: string
+  demo_or_live_url: string
+  start_date: string
+  end_date: string | null
+  resume_id: string
+}
