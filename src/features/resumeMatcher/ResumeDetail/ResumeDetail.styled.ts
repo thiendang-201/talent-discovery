@@ -27,8 +27,8 @@ export const StyledPage = styled(Page)({
   overflow: 'hidden',
 })
 
-export const InfoContainer = styled.div({
-  padding: '36px',
+export const InfoContainer = styled(ScrollArea)({
+  height: '100vh',
 })
 
 export const BackButton = styled.p(({ theme }) => ({
@@ -97,3 +97,7 @@ export const EmptyMsg = styled.p(({ theme }) => ({
   color: theme.colors.slate10,
   fontSize: '12',
 }))
+
+export const InnerContainer = styled.div({
+  padding: '36px',
+})

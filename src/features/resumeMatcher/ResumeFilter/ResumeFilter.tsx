@@ -19,7 +19,7 @@ import { Separator } from '@components/Separator'
 import { IconButton } from '@components/Button'
 import { PiArrowClockwiseBold } from 'react-icons/pi'
 import { useDebounce } from '@uidotdev/usehooks'
-import { FILTER_CATEGORIES, REG_MULTI_WHITESPACE } from '@/constants'
+import { REG_MULTI_WHITESPACE } from '@/constants'
 
 export function ResumeFilter({ className }: ResumeFilterProps) {
   const [searchCategoryValue, setSearchCategoryValue] = useState('')
@@ -42,7 +42,7 @@ export function ResumeFilter({ className }: ResumeFilterProps) {
     setSearchCategoryValue('')
     addFilterValue({
       value: trimmedSearchValue,
-      required: currentFilterCategory === FILTER_CATEGORIES.JOB_TITLE,
+      required: false,
     })
   }
 

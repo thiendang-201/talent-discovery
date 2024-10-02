@@ -24,10 +24,11 @@ export const useResumeFilterStore = create<ResumeFilterValues>()(
       set(state => {
         const category = state.currentFilterCategory
         const filterValues = state.filterMap.get(category)
+
         const newFilterValues =
           filterValues && category !== FILTER_CATEGORIES.JOB_TITLE
             ? [...filterValues, value]
-            : [value]
+            : [{ ...value, required: true }]
 
         state.filterMap.set(category, newFilterValues)
       })

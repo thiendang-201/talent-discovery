@@ -1,4 +1,5 @@
-import { BsFillPeopleFill, BsIntersect } from 'react-icons/bs'
+import { BsFillPeopleFill } from 'react-icons/bs'
+import { BiLogOutCircle } from 'react-icons/bi'
 
 import { Container, LogoBox, NavList } from './SideBarLeft.styled'
 import { NavItem } from './NavItem'
@@ -12,7 +13,7 @@ export function SideBarLeft() {
       </LogoBox>
       <NavList>
         <NavItem to='/resume-matcher' text='Lọc CV' Icon={BsFillPeopleFill} />
-        <NavItem to='/interview-questions' text='Câu hỏi phỏng vấn' Icon={BsIntersect} />
+        <NavItem to='/login' text='Đăng xuất' Icon={BiLogOutCircle} />
       </NavList>
     </Container>
   )

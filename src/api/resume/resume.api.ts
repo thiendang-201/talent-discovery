@@ -41,5 +41,5 @@ export async function getResume(resume_id: string) {
 }
 
 export async function removeResume(resume_id: string) {
-  await axios.delete('/resume/remove_resume' + resume_id)
+  await axios.delete('/resume/remove/' + resume_id)
 }

@@ -19,7 +19,7 @@ const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
       <FieldContainer label={label} error={error}>
         <PasswordFieldContainer>
           <StyledPwInput {...props} type={inputType} ref={ref} />
-          <ToggleButton onClick={toggleShowPassword} variant='clear' color='none'>
+          <ToggleButton onClick={toggleShowPassword} variant='clear' color='none' type='button'>
             <PasswordIcon size={16} />
           </ToggleButton>
         </PasswordFieldContainer>

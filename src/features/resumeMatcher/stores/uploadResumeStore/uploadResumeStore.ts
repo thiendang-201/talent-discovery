@@ -13,7 +13,7 @@ import { OnUploadErrorFn, OnUploadSuccessFn, useUploadResume } from '@/api/resum
 import { API_ERROR_TYPES, QUERY_KEYS } from '@/constants'
 import { useQueryClient } from '@tanstack/react-query'
 
-const batchSize = 6
+const batchSize = 3
 
 const initialValues: UploadResumeStoreData = {
   isUploading: false,
@@ -157,50 +157,6 @@ export const useUploadResumeQueue = () => {
     updatePendingList,
     updateUploadStatus,
   ])
-
-  // Processes the next pending file when ready
-  // useEffect(() => {
-  // const handleFileUpload = async () => {
-  //   if (!!pendingList.length && !!nextList.length) {
-  //     await Promise.allSettled(
-  //       nextList.map(currentUploadFile =>
-  //         uploadFile({
-  //           id: currentUploadFile.id,
-  //           file: currentUploadFile.file,
-  //           folder_id: currentUploadFile.folderId,
-  //           onUploadProgress: progessEvt => {
-  //             updateUploadProgress(currentUploadFile.id, progessEvt.loaded)
-
-  //             if (progessEvt.loaded === progessEvt.total) {
-  //               updateUploadStatus(currentUploadFile.id, {
-  //                 status: 'processing',
-  //                 message: 'Đang trích xuất thông tin',
-  //               })
-  //             }
-  //           },
-  //         })
-  //       )
-  //     )
-
-  //     const newPendingList = pendingList.slice(batchSize)
-
-  //     changeNextUploadFile([])
-  //     updatePendingList(newPendingList)
-  //   }
-  //   }
-
-  console.log('Processes the next pending file when ready')
-
-  //   handleFileUpload()
-  // }, [
-  //   changeNextUploadFile,
-  //   nextList,
-  //   pendingList,
-  //   updatePendingList,
-  //   updateUploadProgress,
-  //   updateUploadStatus,
-  //   uploadFile,
-  // ])
 
   const onEndUpload = useCallback(
     (fileId: string) => {

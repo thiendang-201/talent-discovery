@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { AuthData, AuthStoreValues } from './authStore.type'
 
 const initialData: AuthData = {
-  isLogged: false,
+  isLogged: true,
   email: '',
 }
 

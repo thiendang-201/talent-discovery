@@ -15,6 +15,8 @@ import { BiCollapseAlt } from 'react-icons/bi'
 import { IconButton } from '@components/Button'
 import { UploadFileList } from './UploadFileList'
 import { useParams } from 'react-router-dom'
+import { useQueryClient } from '@tanstack/react-query'
+import { QUERY_KEYS } from '@/constants'
 
 export function UploadResumesDialog() {
   const { folderId = '' } = useParams()
@@ -23,6 +25,7 @@ export function UploadResumesDialog() {
   const isUploading = useUploadResumesStore(state => state.isUploading)
   const resetResumesUpload = useUploadResumesStore(state => state.resetResumesUpload)
   const changeDialogOpen = useUploadResumesStore(state => state.changeDialogOpen)
+  const queryClient = useQueryClient()
   const { getRootProps, getInputProps, isDragAccept, isDragReject, isFocused } = useDropzone({
     accept: { 'application/pdf': [] },
     maxSize: 1024 * 1024, // bytes
@@ -30,6 +33,15 @@ export function UploadResumesDialog() {
       addFiles(acceptedFiles, folderId)
     },
   })
+
+  const reloadResumeList = () => {
+    queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.SEARCH_RESUME] })
+  }
+
+  const handleResetResumesUpload = () => {
+    reloadResumeList()
+    resetResumesUpload()
+  }
 
   return (
     <Dialog open={isOpen} onOpenChange={changeDialogOpen}>
@@ -39,11 +51,11 @@ export function UploadResumesDialog() {
             <DialogTitle>Tải lên CV ứng viên</DialogTitle>
             <ActionButtonWrapper>
               <DialogClose asChild>
-                <IconButton color='slate' variant='clear'>
+                <IconButton color='slate' variant='clear' onClick={reloadResumeList}>
                   <BiCollapseAlt size={16} />
                 </IconButton>
               </DialogClose>
-              <DialogClose asChild disabled={isUploading} onClick={resetResumesUpload}>
+              <DialogClose asChild disabled={isUploading} onClick={handleResetResumesUpload}>
                 <IconButton color='slate' variant='clear' disabled={isUploading}>
                   <RiCloseLine size={16} />
                 </IconButton>
